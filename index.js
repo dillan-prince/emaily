@@ -5,10 +5,15 @@ const cookieSession = require("cookie-session");
 const passport = require("passport");
 const keys = require("./config/keys");
 const bodyParser = require("body-parser");
+
+// database objects
 require("./models/User");
+require("./models/Survey");
+mongoose.connect(keys.mongoConnectionString);
+
+// services
 require("./services/passport");
 
-mongoose.connect(keys.mongoConnectionString);
 const app = express();
 
 // middlewares
@@ -27,6 +32,7 @@ app.use(passport.session());
 // route handlers
 require("./routes/authRoutes")(app);
 require("./routes/billingRoutes")(app);
+require("./routes/surveyRoutes")(app);
 
 // set up express for production
 if (process.env.NODE_ENV === "production") {
