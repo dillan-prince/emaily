@@ -1,6 +1,6 @@
-const keys = require("../../config/keys");
+const keys = require('../../config/keys');
 
-module.exports = survey => {
+module.exports = (survey) => {
   return `
     <html>
       <body>
@@ -9,10 +9,10 @@ module.exports = survey => {
           <p>Please answer the following question:</p>
           <p>${survey.body}</p>
           <div>
-            <a href="${keys.redirectDomain}/api/surveys/thanks">ayy lmao</a>
+            <a href="${keys.redirectDomain}/api/surveys/${survey.id}/yes">ayy lmao</a>
           </div>
           <div>
-            <a href="${keys.redirectDomain}/api/surveys/thanks">nayy lmao</a>
+            <a href="${keys.redirectDomain}/api/surveys/${survey.id}/no">nayy lmao</a>
           </div>
         </div>
       </body>
